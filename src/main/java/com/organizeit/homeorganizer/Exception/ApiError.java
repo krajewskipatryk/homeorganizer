@@ -1,4 +1,4 @@
-package com.organizeit.homeorganizer.Utils;
+package com.organizeit.homeorganizer.Exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,5 +8,5 @@ import org.springframework.http.HttpStatus;
 @AllArgsConstructor
 public class ApiError {
     private String message;
-    private HttpStatus httpStatus;
+    private HttpStatus status;
 }

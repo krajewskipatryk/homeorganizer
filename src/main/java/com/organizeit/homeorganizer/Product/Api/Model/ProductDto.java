@@ -3,7 +3,7 @@ package com.organizeit.homeorganizer.Product.Api.Model;
 import lombok.Data;
 
 @Data
-public class ProductResponse {
+public class ProductDto {
     private String id;
     private String name;
 }

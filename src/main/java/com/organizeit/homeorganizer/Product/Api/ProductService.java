@@ -8,6 +8,6 @@ public interface ProductService {
     ProductResponse createProduct(ProductRequestData productData);
     ProductResponse getProduct(String id);
     ProductResponse updateProduct(ProductEntity product);
-    ProductResponse updateProduct(String id, ProductRequestData productData);
+    ProductResponse updateProduct(String id, ProductRequestData productUpdatedData);
     ProductEntity getProductEntity(String id);
 }

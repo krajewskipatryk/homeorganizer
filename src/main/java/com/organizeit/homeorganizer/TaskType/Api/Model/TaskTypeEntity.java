@@ -1,4 +1,4 @@
-package com.organizeit.homeorganizer.Product.Api.Model;
+package com.organizeit.homeorganizer.TaskType.Api.Model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,8 +12,8 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "products")
-public class ProductEntity {
+@Table(name = "task_types")
+public class TaskTypeEntity {
     @Id
     private String id;
     private String name;

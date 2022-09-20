@@ -1,6 +1,6 @@
 package com.organizeit.homeorganizer.User.Api.Exception;
 
-import com.organizeit.homeorganizer.Utils.ApiError;
+import com.organizeit.homeorganizer.Exception.ApiError;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

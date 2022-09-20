@@ -4,6 +4,7 @@ import com.organizeit.homeorganizer.User.Api.Model.UserRequestData;
 import com.organizeit.homeorganizer.User.Api.Model.UserResponse;
 import com.organizeit.homeorganizer.User.Api.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 class UserController {
     private final UserService userService;
 
-    @PostMapping(path = "/create")
+    @PostMapping(path = "/create", consumes = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse createUser(@RequestBody UserRequestData userData) {
         return userService.createUser(userData);
     }
@@ -22,7 +23,7 @@ class UserController {
         return userService.getUser(id);
     }
 
-    @PutMapping(path = "update/{id}")
+    @PutMapping(path = "update/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     public UserResponse updateUserInfo(@PathVariable String id, @RequestBody UserRequestData userData) {
         return userService.updateUser(id, userData);
     }

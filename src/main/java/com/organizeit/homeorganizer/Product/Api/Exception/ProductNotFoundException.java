@@ -1,10 +1,12 @@
 package com.organizeit.homeorganizer.Product.Api.Exception;
 
-import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.organizeit.homeorganizer.Exception.RecordNotFoundException;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-@NoArgsConstructor
-public class ProductNotFoundException extends RuntimeException {
+public class ProductNotFoundException extends RecordNotFoundException {
+    public ProductNotFoundException() {
+    }
+
+    public ProductNotFoundException(String message) {
+        super(message);
+    }
 }

@@ -1,10 +1,8 @@
 package com.organizeit.homeorganizer.Group.Api.Exception;
 
-import lombok.NoArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.ResponseStatus;
+import com.organizeit.homeorganizer.Exception.RecordNotFoundException;
+import lombok.AllArgsConstructor;
 
-@ResponseStatus(HttpStatus.NOT_FOUND)
-@NoArgsConstructor
-public class GroupNotFoundException extends RuntimeException {
+@AllArgsConstructor
+public class GroupNotFoundException extends RecordNotFoundException {
 }

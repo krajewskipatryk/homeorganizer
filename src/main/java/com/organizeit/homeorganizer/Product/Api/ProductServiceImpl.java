@@ -1,6 +1,7 @@
 package com.organizeit.homeorganizer.Product.Api;
 
 import com.organizeit.homeorganizer.Product.Api.Exception.ProductNotFoundException;
+import com.organizeit.homeorganizer.Product.Api.Model.ProductDto;
 import com.organizeit.homeorganizer.Product.Api.Model.ProductEntity;
 import com.organizeit.homeorganizer.Product.Api.Model.ProductRequestData;
 import com.organizeit.homeorganizer.Product.Api.Model.ProductResponse;
@@ -16,8 +17,11 @@ class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse createProduct(ProductRequestData productData) {
-        ProductEntity product = productMapper.productRequestToEntity(productData);
-        product.setId(IdGenerator.generateId());
+        ProductDto productDto = productMapper.productRequestToDto(productData);
+        productDto.setId(IdGenerator.generateId());
+
+        ProductEntity product = productMapper.productDtoToEntity(productDto);
+
         return productMapper.productEntityToResponse(productRepository.save(product));
     }
 
@@ -32,9 +36,10 @@ class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponse updateProduct(String id, ProductRequestData productData) {
+    public ProductResponse updateProduct(String id, ProductRequestData productUpdatedData) {
         ProductEntity product = this.getProductEntity(id);
-        product = productMapper.productRequestToEntity(productData);
+        product = productMapper.productRequestToEntity(productUpdatedData);
+        product.setId(id);
         return productMapper.productEntityToResponse(productRepository.save(product));
     }
 

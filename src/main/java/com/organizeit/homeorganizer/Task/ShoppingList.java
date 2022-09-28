@@ -1,4 +1,4 @@
 package com.organizeit.homeorganizer.Task;
 
-class TaskController {
+public class ShoppingList {
 }

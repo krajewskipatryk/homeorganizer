@@ -38,4 +38,14 @@ class GroupController {
     public GroupCustomersResponse removeUserFromGroup(@PathVariable UUID groupId, @PathVariable UUID customerId) {
         return groupFacade.removeCustomerFromGroup(groupId, customerId);
     }
+
+    @PostMapping(path = "/{groupId}/add/housework")
+    public void addHouseWorkService(@PathVariable UUID groupId) {
+        groupFacade.addHouseWorkService(groupId);
+    }
+
+    @PostMapping(path = "/{groupId}/add/shoppinglist")
+    public void addShoppingListService(@PathVariable UUID groupId) {
+        groupFacade.addShoppingListService(groupId);
+    }
 }

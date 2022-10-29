@@ -6,6 +6,9 @@ import com.organizeit.homeorganizer.Group.Dto.GroupDto;
 import com.organizeit.homeorganizer.Group.Dto.GroupRequestData;
 import com.organizeit.homeorganizer.Group.Dto.GroupResponse;
 import com.organizeit.homeorganizer.Group.Dto.GroupCustomersResponse;
+import com.organizeit.homeorganizer.Task.HouseWork;
+import com.organizeit.homeorganizer.Task.ShoppingList;
+import com.organizeit.homeorganizer.Task.TaskFacade;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
@@ -15,9 +18,30 @@ public class GroupFacade {
     private final GroupService groupService;
     private final CustomerFacade customerFacade;
     private final GroupMapper groupMapper;
+    private final TaskFacade taskFacade;
 
     public GroupResponse createGroup(GroupRequestData groupData) {
         return groupService.createGroup(groupData);
+    }
+
+    public void addHouseWorkService(UUID groupId) {
+        Group group = groupService.getGroupEntity(groupId);
+
+        HouseWork houseWork = taskFacade.createHouseWork(group);
+
+        group.setHouseWork(houseWork);
+
+        groupService.saveGroupChanges(group);
+    }
+
+    public void addShoppingListService(UUID groupId) {
+        Group group = groupService.getGroupEntity(groupId);
+
+        ShoppingList shoppingList = taskFacade.createShoppingList(group);
+
+        group.setShoppingList(shoppingList);
+
+        groupService.saveGroupChanges(group);
     }
 
     public GroupResponse getGroupInfo(UUID id) {

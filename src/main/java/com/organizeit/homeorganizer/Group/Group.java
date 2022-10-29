@@ -1,6 +1,8 @@
 package com.organizeit.homeorganizer.Group;
 
 import com.organizeit.homeorganizer.Customer.Customer;
+import com.organizeit.homeorganizer.Task.HouseWork;
+import com.organizeit.homeorganizer.Task.ShoppingList;
 import lombok.*;
 
 import javax.persistence.*;
@@ -17,10 +19,18 @@ import java.util.UUID;
 public class Group {
     @Id
     private UUID id;
+
     private String name;
+
     @ManyToMany
     @JoinTable(name = "group_has_customers",
             joinColumns = @JoinColumn(name = "group_id"),
             inverseJoinColumns = @JoinColumn(name = "customer_id"))
     private Set<Customer> members;
+
+    @OneToOne
+    private HouseWork houseWork;
+
+    @OneToOne
+    private ShoppingList shoppingList;
 }

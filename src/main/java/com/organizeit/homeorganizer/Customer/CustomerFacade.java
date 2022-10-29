@@ -4,6 +4,7 @@ import com.organizeit.homeorganizer.Customer.Dto.CustomerDto;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerRequestData;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerResponse;
 import com.organizeit.homeorganizer.Group.Group;
+import com.organizeit.homeorganizer.Task.TaskHistory;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
@@ -39,5 +40,10 @@ public class CustomerFacade {
         customerDto.removeGroup(group);
 
         customerService.saveCustomerChanges(customerMapper.customerDtoToEntity(customerDto));
+    }
+
+    public void addTaskHistory(Customer customer, TaskHistory taskHistory) {
+        customer.getTaskHistory().add(taskHistory);
+        customerService.saveCustomerChanges(customer);
     }
 }

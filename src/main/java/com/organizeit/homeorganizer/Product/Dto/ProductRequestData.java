@@ -1,4 +1,4 @@
-package com.organizeit.homeorganizer.Task.Dto;
+package com.organizeit.homeorganizer.Product.Dto;
 
 import lombok.Data;
 

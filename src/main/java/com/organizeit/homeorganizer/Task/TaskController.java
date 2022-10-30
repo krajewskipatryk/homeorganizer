@@ -13,22 +13,22 @@ import java.util.UUID;
 @RequiredArgsConstructor
 class TaskController {
     private final TaskFacade taskFacade;
-    @PostMapping(path = "/housework/{houseWorkId}/add/tasktype")
+    @PostMapping(path = "/housework/{houseWorkId}/tasktype/add")
     public void addTaskType(@PathVariable UUID houseWorkId, @RequestBody TaskTypeRequestData taskTypeData) {
         taskFacade.addTaskType(taskTypeData.getName(), houseWorkId);
     }
 
-    @PostMapping(path = "/shoppinglist/{shoppingListId}/add/product")
+    @PostMapping(path = "/shoppinglist/{shoppingListId}/product/add")
     public void addProduct(@PathVariable UUID shoppingListId, @RequestBody ProductRequestData productData) {
         taskFacade.addProduct(productData.getName(), shoppingListId);
     }
 
-    @PostMapping(path = "/housework/task/{taskTypeId}/perform/{customerId}")
+    @PostMapping(path = "/housework/task/{taskTypeId}/customer/{customerId}/perform")
     public void addPerformedTask(@PathVariable UUID taskTypeId, @PathVariable UUID customerId) {
         taskFacade.addPerformedTask(taskTypeId, customerId);
     }
 
-    @PostMapping(path = "/shoppinglist/product/{productId}/perform/{customerId}")
+    @PostMapping(path = "/shoppinglist/product/{productId}/customer/{customerId}/perform")
     public void addBoughtProduct(@PathVariable UUID productId, @PathVariable UUID customerId) {
         taskFacade.addBoughtProduct(productId, customerId);
     }

@@ -29,12 +29,12 @@ class GroupController {
         return groupFacade.getGroupCustomers(id);
     }
 
-    @PutMapping(path = "/update/{groupId}/customers/add/{customerId}")
+    @PutMapping(path = "/update/{groupId}/customer/{customerId}/add")
     public GroupCustomersResponse addUserToGroup(@PathVariable UUID groupId, @PathVariable UUID customerId) {
         return groupFacade.addCustomerToGroup(groupId, customerId);
     }
 
-    @PutMapping(path = "/update/{groupId}/customers/remove/{customerId}")
+    @PutMapping(path = "/update/{groupId}/customer/{customerId}/remove")
     public GroupCustomersResponse removeUserFromGroup(@PathVariable UUID groupId, @PathVariable UUID customerId) {
         return groupFacade.removeCustomerFromGroup(groupId, customerId);
     }

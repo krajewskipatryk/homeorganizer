@@ -26,7 +26,7 @@ User:
 ```
 **Get user info:**
 
-**GET** localhost/8080/customer/get/:userId
+**GET** localhost/8080/customer/get/:customerId
 
 Group:
 -
@@ -59,11 +59,11 @@ Group:
 
 **Add user to the group**
 
-**PUT** localhost/8080/group/update/:groupId/customer/:userId/add
+**PUT** localhost/8080/group/update/:groupId/customer/:customerId/add
 
 **Remove user to the group**
 
-**PUT** localhost/8080/group/update/:groupId/customer/:userId/remove
+**PUT** localhost/8080/group/update/:groupId/customer/:customerId/remove
 
 Task:
 -

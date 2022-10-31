@@ -14,7 +14,7 @@ User:
 
 **Create user:**
 
-**POST** localhost:8080/customer/create\
+**POST** localhost/8080/customer/create\
 **Body (requires Json type):**
 ```json5
 {
@@ -26,14 +26,14 @@ User:
 ```
 **Get user info:**
 
-**GET** localhost:8080/customer/get/:customerId
+**GET** localhost/8080/customer/get/:customerId
 
 Group:
 -
 
 **Create group:**
 
-**POST** localhost:8080/group/create\
+**POST** localhost/8080/group/create\
 **Body (requires Json type):**
 ```json5
 {
@@ -43,34 +43,34 @@ Group:
 
 **Add housework functionality for group:**
 
-**POST** localhost:8080/group/:groupId/add/housework
+**POST** localhost/8080/group/:groupId/add/housework
 
 **Add shopping list functionality for group:**
 
-**POST** localhost:8080/group/:groupId/add/shoppinglist
+**POST** localhost/8080/group/:groupId/add/shoppinglist
 
 **List all users from group**
 
-**GET** localhost:8080/group/get/:groupId/customers
+**GET** localhost/8080/group/get/:groupId/customers
 
 **Get group information**
 
-**GET** localhost:8080/group/get/:groupId
+**GET** localhost/8080/group/get/:groupId
 
 **Add user to the group**
 
-**PUT** localhost:8080/group/update/:groupId/customer/:customerId/add
+**PUT** localhost/8080/group/update/:groupId/customer/:customerId/add
 
 **Remove user to the group**
 
-**PUT** localhost:8080/group/update/:groupId/customer/:customerId/remove
+**PUT** localhost/8080/group/update/:groupId/customer/:customerId/remove
 
 Task:
 -
 
 **Add new task to the schedule list:**
 
-**POST** localhost:8080/task/housework/:houseworkId/add/tasktype\
+**POST** localhost/8080/task/housework/:houseworkId/add/tasktype\
 **Body (requires Json type):**
 ```json5
 {
@@ -80,11 +80,11 @@ Task:
 
 **Perform task:**
 
-**POST** localhost:8080/task/housework/task/:taskTypeId/customer/:customerId/perform
+**POST** localhost/8080/task/housework/task/:taskTypeId/customer/:customerId/perform
 
 **Add new product to the shopping list:**
 
-**POST** localhost:8080/task/shoppinglist/:shoppinglistId/product/add\
+**POST** localhost/8080/task/shoppinglist/:shoppinglistId/product/add\
 **Body (requires Json type):**
 ```json5
 {
@@ -94,24 +94,24 @@ Task:
 
 **Add bought product:**
 
-**POST** localhost:8080/task/shoppinglist/product/:productId/customer/:customerId/perform
+**POST** localhost/8080/task/shoppinglist/product/:productId/customer/:customerId/perform
 
 **Get task history for user:**
 
-**GET** localhost:8080/task/customer/:customerId/history
+**GET** localhost/8080/task/customer/:customerId/history
 
 **Get history for certain task:**
 
-**GET** localhost:8080/task/taskType/:taskTypeId/history
+**GET** localhost/8080/task/taskType/:taskTypeId/history
 
 **Get task history for user on certain task**
 
-**GET** localhost:8080/task/customer/:customerId/taskType/:taskTypeId/history
+**GET** localhost/8080/task/customer/:customerId/taskType/:taskTypeId/history
 
 **Get shopping history for certain product:**
 
-**GET** localhost:8080/task/product/:productId/history
+**GET** localhost/8080/task/product/:productId/history
 
 **Get user's shopping history for certain product:**
 
-**GET** localhost:8080/task/customer/:customerId/product/:productId/history
+**GET** localhost/8080/task/customer/:customerId/product/:productId/history

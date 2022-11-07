@@ -26,11 +26,7 @@ User:
 ```
 **Get user info:**
 
-<<<<<<< HEAD
 **GET** localhost:8080/customer/get/:customerId
-=======
-**GET** localhost/8080/customer/get/:customerId
->>>>>>> 8ac9ebd (Update README.md)
 
 Group:
 -
@@ -63,19 +59,15 @@ Group:
 
 **Add user to the group**
 
-<<<<<<< HEAD
 **PUT** localhost:8080/group/update/:groupId/customer/:customerId/add
 
 **Remove user to the group**
 
 **PUT** localhost:8080/group/update/:groupId/customer/:customerId/remove
-=======
-**PUT** localhost/8080/group/update/:groupId/customer/:customerId/add
 
 **Remove user to the group**
 
-**PUT** localhost/8080/group/update/:groupId/customer/:customerId/remove
->>>>>>> 8ac9ebd (Update README.md)
+**PUT** localhost:8080/group/update/:groupId/customer/:customerId/remove
 
 Task:
 -
@@ -126,8 +118,4 @@ Task:
 
 **Get user's shopping history for certain product:**
 
-<<<<<<< HEAD
 **GET** localhost:8080/task/customer/:customerId/product/:productId/history
-=======
-**GET** localhost/8080/task/customer/:customerId/product/:productId/history
->>>>>>> 8ac9ebd (Update README.md)

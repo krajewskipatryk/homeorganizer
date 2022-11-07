@@ -14,13 +14,20 @@ class CustomerService {
     private final CustomerMapper customerMapper;
 
     public CustomerResponse createCustomer(CustomerRequestData customerData) {
-        CustomerDto customerDto = customerMapper.customerRequestDataToDto(customerData);
-        customerDto.setId(UUID.randomUUID());
+//        CustomerDto customerDto = customerMapper.customerRequestDataToDto(customerData);
+//        customerDto.setId(UUID.randomUUID());
 
-        Customer customer = customerMapper.customerDtoToEntity(customerDto);
+        Customer customer = new Customer();
+        customer.setId(UUID.randomUUID());
+        customer.setEmail(customerData.getEmail());
+        customer.setFirstName(customerData.getFirstName());
+        customer.setPassword(customerData.getPassword());
+        customer.setLastName(customerData.getLastName());
         customerRepository.save(customer);
 
-        return customerMapper.customerDtoToResponse(customerDto);
+        CustomerDto responseDto = customerMapper.customerEntityToDto(customer);
+
+        return customerMapper.customerDtoToResponse(responseDto);
 
     }
 

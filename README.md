@@ -74,7 +74,7 @@ Task:
 
 **Add new task to the schedule list:**
 
-**POST** localhost:8080/task/housework/:houseworkId/add/tasktype\
+**POST** localhost:8080/task/housework/:houseworkId/tasktype/add\
 **Body (requires Json type):**
 ```json5
 {

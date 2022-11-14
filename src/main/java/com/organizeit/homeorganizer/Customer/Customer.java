@@ -10,30 +10,51 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 
-@AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter(value = AccessLevel.PACKAGE)
+@AllArgsConstructor
+@Builder
 @Entity
 @Table(name = "customers")
 public class Customer {
 
     @Id
+    @Getter
     private UUID id;
 
+    @Getter
     private String firstName;
 
+    @Getter
     private String lastName;
 
+    @Getter
     private String email;
 
+    @Getter
     private String password;
 
+    @Getter
+    @Setter(value = AccessLevel.PACKAGE)
     @JsonIgnore
     @ManyToMany(mappedBy = "members")
     private Set<Group> groups;
 
+    @JsonIgnore
+    @Getter
+    @Setter(value = AccessLevel.PACKAGE)
     @OneToMany
     @JoinColumn(name = "customer_task_history")
     private Set<TaskHistory> taskHistory = new HashSet<>();
+
+    void addGroup(Group group) {
+        if (!groups.contains(group)) {
+            groups.add(group);
+        }
+    }
+
+    void removeGroup(Group group) {
+        if (groups.contains(group)) {
+            groups.remove(group);
+        }
+    }
 }

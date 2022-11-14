@@ -1,6 +1,5 @@
 package com.organizeit.homeorganizer.Customer;
 
-import com.organizeit.homeorganizer.Customer.Dto.CustomerDto;
 import com.organizeit.homeorganizer.Customer.Exception.CustomerNotFoundException;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerRequestData;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerResponse;
@@ -14,26 +13,23 @@ class CustomerService {
     private final CustomerMapper customerMapper;
 
     public CustomerResponse createCustomer(CustomerRequestData customerData) {
-//        CustomerDto customerDto = customerMapper.customerRequestDataToDto(customerData);
-//        customerDto.setId(UUID.randomUUID());
+        Customer customer = Customer.builder()
+                .id(UUID.randomUUID())
+                .firstName(customerData.getFirstName())
+                .lastName(customerData.getLastName())
+                .email(customerData.getEmail())
+                .password(customerData.getPassword())
+                .build();
 
-        Customer customer = new Customer();
-        customer.setId(UUID.randomUUID());
-        customer.setEmail(customerData.getEmail());
-        customer.setFirstName(customerData.getFirstName());
-        customer.setPassword(customerData.getPassword());
-        customer.setLastName(customerData.getLastName());
         customerRepository.save(customer);
 
-        CustomerDto responseDto = customerMapper.customerEntityToDto(customer);
-
-        return customerMapper.customerDtoToResponse(responseDto);
+        return customerMapper.customerEntityToResponse(customer);
 
     }
 
     public CustomerResponse getCustomer(UUID id) {
-        CustomerDto customerDto = customerMapper.customerEntityToDto(this.getCustomerEntity(id));
-        return customerMapper.customerDtoToResponse(customerDto);
+        Customer customer = this.getCustomerEntity(id);
+        return customerMapper.customerEntityToResponse(customer);
     }
 
     public Customer getCustomerEntity(UUID id) {

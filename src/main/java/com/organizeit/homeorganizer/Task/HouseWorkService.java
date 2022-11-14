@@ -12,9 +12,16 @@ import java.util.UUID;
 class HouseWorkService {
     private final HouseWorkRepository houseWorkRepository;
     public HouseWork createHouseWork(Group group) {
-        HouseWork houseWork = new HouseWork(UUID.randomUUID(), group, new HashSet<>());
+        HouseWork houseWork = HouseWork.builder()
+                .id(UUID.randomUUID())
+                .group(group)
+                .taskList(new HashSet<>())
+                .taskHistory(new HashSet<>())
+                .build();
 
-        return houseWorkRepository.save(houseWork);
+        houseWorkRepository.save(houseWork);
+
+        return houseWork;
     }
 
     public Set<TaskType> getTaskList(UUID id) {
@@ -35,7 +42,7 @@ class HouseWorkService {
         });
     }
 
-    public void deleteTask(UUID houseWorkId, Task task) {
+    public void deleteTask(UUID houseWorkId, TaskType task) {
         HouseWork houseWork = this.getHouseWorkEntity(houseWorkId);
         houseWork.getTaskList().remove(task);
         houseWorkRepository.save(houseWork);

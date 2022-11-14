@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class ProductConfiguration {
     @Bean
-    ProductService productService(ProductRepository productRepository, ProductMapper productMapper) {
-        return new ProductService(productRepository, productMapper);
+    ProductService productService(ProductRepository productRepository) {
+        return new ProductService(productRepository);
     }
 }

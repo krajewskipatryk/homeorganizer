@@ -12,7 +12,12 @@ import java.util.UUID;
 class ShoppingListService {
     private final ShoppingListRepository shoppingListRepository;
     public ShoppingList createShoppingList(Group group) {
-        ShoppingList shoppingList = new ShoppingList(UUID.randomUUID(), group, new HashSet<>(), new HashSet<>());
+        ShoppingList shoppingList = ShoppingList.builder()
+                .id(UUID.randomUUID())
+                .group(group)
+                .taskHistory(new HashSet<>())
+                .products(new HashSet<>())
+                .build();
 
         return shoppingListRepository.save(shoppingList);
     }

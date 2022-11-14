@@ -2,24 +2,32 @@ package com.organizeit.homeorganizer.Task;
 
 import com.organizeit.homeorganizer.Group.Group;
 import com.organizeit.homeorganizer.TaskType.TaskType;
-import lombok.Getter;
+import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import java.util.HashSet;
+import javax.persistence.*;
 import java.util.Set;
 import java.util.UUID;
 
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "house_work")
-public class HouseWork extends Task {
-    public HouseWork(UUID id, Group group, Set<TaskHistory> taskHistory) {
-        super(id, group, taskHistory);
-    }
+public class HouseWork {
+    @Id
+    @Getter
+    private UUID id;
+
+    @Getter
+    @OneToOne
+    private Group group;
 
     @Getter
     @OneToMany
-    private Set<TaskType> taskList = new HashSet<>();
+    private Set<TaskHistory> taskHistory;
+
+    @Getter
+    @OneToMany
+    private Set<TaskType> taskList;
 
 }

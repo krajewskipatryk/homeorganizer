@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 class TaskTypeConfiguration {
     @Bean
-    TaskTypeService taskTypeService(TaskTypeRepository taskTypeRepository, TaskTypeMapper taskTypeMapper) {
-        return new TaskTypeService(taskTypeMapper, taskTypeRepository);
+    TaskTypeService taskTypeService(TaskTypeRepository taskTypeRepository) {
+        return new TaskTypeService(taskTypeRepository);
     }
 }

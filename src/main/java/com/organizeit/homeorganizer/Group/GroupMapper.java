@@ -8,9 +8,9 @@ import org.mapstruct.Mapper;
 
 @Mapper(componentModel = "spring")
 interface GroupMapper {
-    GroupDto groupRequestToDto(GroupRequestData groupData);
     GroupResponse groupDtoToResponse(GroupDto groupDto);
-    GroupCustomersResponse groupDtoToUsersResponse(GroupDto groupDto);
+    GroupCustomersResponse groupEntityToUsersResponse(Group group);
     GroupDto groupEntityToDto(Group group);
     Group groupDtoToEntity(GroupDto groupDto);
+    GroupResponse groupEntityToResponse(Group group);
 }

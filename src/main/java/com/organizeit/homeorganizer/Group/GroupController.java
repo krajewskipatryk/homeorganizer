@@ -3,6 +3,8 @@ package com.organizeit.homeorganizer.Group;
 import com.organizeit.homeorganizer.Group.Dto.GroupCustomersResponse;
 import com.organizeit.homeorganizer.Group.Dto.GroupRequestData;
 import com.organizeit.homeorganizer.Group.Dto.GroupResponse;
+import com.organizeit.homeorganizer.Task.HouseWork;
+import com.organizeit.homeorganizer.Task.ShoppingList;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
@@ -40,12 +42,14 @@ class GroupController {
     }
 
     @PostMapping(path = "/{groupId}/add/housework")
-    public void addHouseWorkService(@PathVariable UUID groupId) {
-        groupFacade.addHouseWorkService(groupId);
+    public UUID addHouseWorkService(@PathVariable UUID groupId) {
+        HouseWork houseWork = groupFacade.addHouseWorkService(groupId);
+        return houseWork.getId();
     }
 
     @PostMapping(path = "/{groupId}/add/shoppinglist")
-    public void addShoppingListService(@PathVariable UUID groupId) {
-        groupFacade.addShoppingListService(groupId);
+    public UUID addShoppingListService(@PathVariable UUID groupId) {
+        ShoppingList shoppingList = groupFacade.addShoppingListService(groupId);
+        return shoppingList.getId();
     }
 }

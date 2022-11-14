@@ -9,6 +9,5 @@ import org.mapstruct.Mapper;
 interface CustomerMapper {
     Customer customerDtoToEntity(CustomerDto customerDto);
     CustomerDto customerEntityToDto(Customer customer);
-    CustomerDto customerRequestDataToDto(CustomerRequestData customerData);
-    CustomerResponse customerDtoToResponse(CustomerDto customerDto);
+    CustomerResponse customerEntityToResponse(Customer customer);
 }

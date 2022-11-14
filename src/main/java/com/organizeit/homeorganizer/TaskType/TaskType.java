@@ -1,10 +1,7 @@
 package com.organizeit.homeorganizer.TaskType;
 
 import com.organizeit.homeorganizer.Task.TaskHistory;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,6 +12,7 @@ import java.util.UUID;
 
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Entity
 @Table(name = "task_types")
 public class TaskType {

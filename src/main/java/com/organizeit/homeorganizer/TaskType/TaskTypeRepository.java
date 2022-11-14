@@ -8,5 +8,4 @@ import java.util.UUID;
 
 @Repository
 interface TaskTypeRepository extends JpaRepository<TaskType, UUID> {
-    Optional<TaskType> findById(UUID id);
 }

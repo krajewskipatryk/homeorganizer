@@ -1,7 +1,6 @@
-package com.organizeit.homeorganizer.Task.Exception;
+package com.organizeit.homeorganizer.Product.Exception;
 
 import com.organizeit.homeorganizer.Exception.ApiError;
-import com.organizeit.homeorganizer.Task.Exception.ProductNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

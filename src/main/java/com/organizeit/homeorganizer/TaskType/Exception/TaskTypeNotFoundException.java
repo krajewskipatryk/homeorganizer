@@ -1,4 +1,4 @@
-package com.organizeit.homeorganizer.Task.Exception;
+package com.organizeit.homeorganizer.TaskType.Exception;
 
 import com.organizeit.homeorganizer.Exception.RecordNotFoundException;
 import lombok.AllArgsConstructor;

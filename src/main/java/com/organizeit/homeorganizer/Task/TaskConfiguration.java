@@ -1,5 +1,8 @@
 package com.organizeit.homeorganizer.Task;
 
+import com.organizeit.homeorganizer.Customer.CustomerFacade;
+import com.organizeit.homeorganizer.Product.ProductService;
+import com.organizeit.homeorganizer.TaskType.TaskTypeService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -7,41 +10,27 @@ import org.springframework.context.annotation.Configuration;
 class TaskConfiguration {
 
     @Bean
-    TaskService taskService() {
-        return new TaskService();
+    TaskHistoryService taskHistoryService(TaskHistoryRepository taskHistoryRepository) {
+        return new TaskHistoryService(taskHistoryRepository);
     }
 
     @Bean
-    TaskTypeService taskTypeService(TaskTypeRepository taskTypeRepository, TaskTypeMapper taskTypeMapper) {
-        return new TaskTypeService(taskTypeMapper, taskTypeRepository);
+    HouseWorkService houseWorkService(HouseWorkRepository houseWorkRepository) {
+        return new HouseWorkService(houseWorkRepository);
     }
 
     @Bean
-    TaskHistory taskHistory() {
-        return new TaskHistory();
-    }
-
-    @Bean
-    ProductService productService(ProductRepository productRepository, ProductMapper productMapper) {
-        return new ProductService(productRepository, productMapper);
-    }
-
-    @Bean
-    HouseWorkService houseWorkService() {
-        return new HouseWorkService();
-    }
-
-    @Bean
-    ShoppingListService shoppingListService() {
-        return new ShoppingListService();
+    ShoppingListService shoppingListService(ShoppingListRepository shoppingListRepository) {
+        return new ShoppingListService(shoppingListRepository);
     }
 
     @Bean
     TaskFacade taskFacade(HouseWorkService houseWorkService,
                           ProductService productService,
                           ShoppingListService shoppingListService,
-                          TaskService taskService,
-                          TaskTypeService taskTypeService) {
-        return new TaskFacade(houseWorkService, productService, shoppingListService, taskService, taskTypeService);
+                          TaskTypeService taskTypeService,
+                          TaskHistoryService taskHistoryService,
+                          CustomerFacade customerFacade) {
+        return new TaskFacade(houseWorkService, productService, shoppingListService, taskTypeService, taskHistoryService, customerFacade);
     }
 }

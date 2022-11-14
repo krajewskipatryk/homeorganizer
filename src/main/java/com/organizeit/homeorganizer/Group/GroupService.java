@@ -1,5 +1,6 @@
 package com.organizeit.homeorganizer.Group;
 
+import com.organizeit.homeorganizer.Customer.Customer;
 import com.organizeit.homeorganizer.Group.Dto.GroupCustomersResponse;
 import com.organizeit.homeorganizer.Group.Dto.GroupDto;
 import com.organizeit.homeorganizer.Group.Dto.GroupRequestData;
@@ -7,6 +8,7 @@ import com.organizeit.homeorganizer.Group.Dto.GroupResponse;
 import com.organizeit.homeorganizer.Group.Exception.GroupNotFoundException;
 import lombok.RequiredArgsConstructor;
 
+import java.util.Set;
 import java.util.UUID;
 
 @RequiredArgsConstructor
@@ -15,13 +17,14 @@ class GroupService {
     private final GroupMapper groupMapper;
 
     public GroupResponse createGroup(GroupRequestData groupData) {
-        GroupDto groupDto = groupMapper.groupRequestToDto(groupData);
-        groupDto.setId(UUID.randomUUID());
+        Group group = Group.builder()
+                .id(UUID.randomUUID())
+                .name(groupData.getName())
+                .build();
 
-        Group group = groupMapper.groupDtoToEntity(groupDto);
         groupRepository.save(group);
 
-        return groupMapper.groupDtoToResponse(groupDto);
+        return groupMapper.groupEntityToResponse(group);
     }
 
     public GroupResponse getGroup(UUID id) {
@@ -29,9 +32,8 @@ class GroupService {
         return groupMapper.groupDtoToResponse(groupDto);
     }
 
-    public GroupCustomersResponse getGroupCustomers(UUID id) {
-        GroupDto groupDto = groupMapper.groupEntityToDto(this.getGroupEntity(id));
-        return groupMapper.groupDtoToUsersResponse(groupDto);
+    public Set<Customer> getGroupCustomers(UUID id) {
+        return this.getGroupEntity(id).getMembers();
     }
 
     public Group getGroupEntity(UUID id) {

@@ -1,9 +1,9 @@
 package com.organizeit.homeorganizer.Customer;
 
-import com.organizeit.homeorganizer.Customer.Dto.CustomerDto;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerRequestData;
 import com.organizeit.homeorganizer.Customer.Dto.CustomerResponse;
 import com.organizeit.homeorganizer.Group.Group;
+import com.organizeit.homeorganizer.Task.TaskHistory;
 import lombok.RequiredArgsConstructor;
 
 import java.util.UUID;
@@ -17,7 +17,7 @@ public class CustomerFacade {
         return customerService.createCustomer(customerData);
     }
 
-    CustomerResponse getCustomer(UUID id) {
+    public CustomerResponse getCustomer(UUID id) {
         return customerService.getCustomer(id);
     }
 
@@ -26,18 +26,23 @@ public class CustomerFacade {
     }
 
     public void addGroup(Group group, Customer customer) {
-        CustomerDto customerDto = customerMapper.customerEntityToDto(customer);
+        customer.addGroup(group);
 
-        customerDto.addGroup(group);
-
-        customerService.saveCustomerChanges(customerMapper.customerDtoToEntity(customerDto));
+        customerService.saveCustomerChanges(customer);
     }
 
     public void removeGroup(Group group, Customer customer) {
-        CustomerDto customerDto = customerMapper.customerEntityToDto(customer);
+        customer.removeGroup(group);
 
-        customerDto.removeGroup(group);
+        customerService.saveCustomerChanges(customer);
+    }
 
-        customerService.saveCustomerChanges(customerMapper.customerDtoToEntity(customerDto));
+    public void addTaskHistory(Customer customer, TaskHistory taskHistory) {
+        customer.getTaskHistory().add(taskHistory);
+        customerService.saveCustomerChanges(customer);
+    }
+
+    public CustomerResponse mapCustomerToCustomerResponse(Customer customer) {
+        return customerMapper.customerEntityToResponse(customer);
     }
 }
